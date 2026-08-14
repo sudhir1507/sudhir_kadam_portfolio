@@ -1,20 +1,11 @@
-name: CI/CD
+name: CI
 
 on:
   push:
-    branches: [myportfolio, main]
+    branches: [myportfolio]
   pull_request:
     branches: [main]
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
   build:
@@ -46,21 +37,3 @@ jobs:
           VITE_GITHUB_URL: https://github.com/sudhir1507?tab=repositories
           VITE_GITHUB_PROFILE_URL: https://github.com/sudhir1507
           VITE_LINKEDIN_URL: https://www.linkedin.com/in/sudhir-kadam-b32371212/
-
-      - name: Upload Pages artifact
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

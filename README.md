@@ -4,6 +4,8 @@ React + Vite portfolio. `main` is the default branch. Work happens on `myportfol
 
 CI builds on `myportfolio`. CD deploys GitHub Pages only after a merge to `main`.
 
+Enable Pages: **Settings → Pages → Source → GitHub Actions**.
+
 ## Local setup
 
 ```bash
