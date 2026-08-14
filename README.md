@@ -1,6 +1,8 @@
 # Sudhir Kadam Portfolio
 
-React + Vite portfolio. Live deploy is GitHub Pages from the `myportfolio` branch.
+React + Vite portfolio. `main` is the default branch. Work happens on `myportfolio`, then that branch is merged into `main`.
+
+CI builds on `myportfolio`. CD deploys GitHub Pages only after a merge to `main`.
 
 ## Local setup
 
