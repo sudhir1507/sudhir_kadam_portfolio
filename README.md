@@ -2,9 +2,22 @@
 
 React + Vite portfolio. `main` is the default branch. Work happens on `myportfolio`, then that branch is merged into `main`.
 
-CI builds on `myportfolio`. CD deploys GitHub Pages only after a merge to `main`.
+- **CI** builds on every push to `myportfolio`
+- **CD** builds and deploys to GitHub Pages after a merge to `main`
 
-Enable Pages: **Settings → Pages → Source → GitHub Actions**.
+## GitHub Pages (required)
+
+Free GitHub Pages only works on a **public** repository.
+
+1. **Settings → General → Danger Zone → Change repository visibility → Public**
+2. After the first successful deploy, **Settings → Pages → Branch** = `gh-pages` / `/ (root)`
+3. Site URL: https://sudhir1507.github.io/sudhir_kadam_portfolio/
+
+Add these repository secrets so the contact form works in production:
+
+- `VITE_EMAILJS_SERVICE_ID`
+- `VITE_EMAILJS_TEMPLATE_ID`
+- `VITE_EMAILJS_PUBLIC_KEY`
 
 ## Local setup
 
@@ -20,13 +33,3 @@ npm run dev
 ```
 
 For local preview keep `VITE_BASE=/` and `VITE_SITE_URL=http://localhost:5173`.
-
-## GitHub Actions secrets
-
-Add these repository secrets so the contact form works in production:
-
-- `VITE_EMAILJS_SERVICE_ID`
-- `VITE_EMAILJS_TEMPLATE_ID`
-- `VITE_EMAILJS_PUBLIC_KEY`
-
-Enable **Settings → Pages → Source: GitHub Actions**.
