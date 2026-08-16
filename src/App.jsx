@@ -5,18 +5,30 @@ import {
   ArrowRight,
   Code2,
   Database,
+  ExternalLink,
   Lock,
   Mail,
   MapPin,
   Menu,
+  Moon,
   Server,
-  Sparkles,
+  Sun,
   X,
-  Zap,
 } from 'lucide-react';
-import profileImg from './assets/profile.png';
+import profileImg from './assets/profile.jpg';
 import Resume from './Resume';
 import { CONTACT, EMAILJS, SOCIAL } from './config';
+import {
+  education,
+  experience,
+  navLinks,
+  projects,
+  services,
+  skillGroups,
+  stats,
+} from './data';
+
+const serviceIcons = { Code2, Server, Database, Lock };
 
 function GitHubIcon({ size = 18 }) {
   return (
@@ -34,181 +46,9 @@ function LinkedInIcon({ size = 18 }) {
   );
 }
 
-const navLinks = [
-  { href: '#services', label: 'Services' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#education', label: 'Education' },
-  { href: '#contact', label: 'Contact' },
-];
-
-const services = [
-  {
-    title: 'Full-Stack Web Apps',
-    icon: Code2,
-    description:
-      'End-to-end web applications built with Node.js and modern frontends, focused on speed, scalability, and seamless user experiences.',
-  },
-  {
-    title: 'API & Backend Engineering',
-    icon: Server,
-    description:
-      'Designing robust RESTful APIs, microservices, and server-side logic engineered for high availability and clean architecture.',
-  },
-  {
-    title: 'Database & SQL Integration',
-    icon: Database,
-    description:
-      'Designing and optimizing relational schemas, complex SQL queries, and efficient caching strategies to maximize data throughput.',
-  },
-  {
-    title: 'Authentication & Security',
-    icon: Lock,
-    description:
-      'Implementing secure JWT, OAuth, and session management systems built to protect user data and prevent authorization vulnerabilities.',
-  },
-  {
-    title: 'State Sync & Real-Time Data',
-    icon: Sparkles,
-    description:
-      'Managing client-side state persistence and multi-tab synchronization for frictionless, real-time user interactions.',
-  },
-  {
-    title: 'Performance Optimization',
-    icon: Zap,
-    description:
-      'Auditing and tuning web applications for lightning-fast page loads, reduced database bottlenecks, and low latency.',
-  },
-];
-
-const skillGroups = [
-  { title: 'Programming Languages', items: ['JavaScript', 'TypeScript', 'PHP', 'Java', 'C'] },
-  {
-    title: 'Backend Development',
-    items: [
-      'Node.js',
-      'Express.js',
-      'REST APIs',
-      'Middleware',
-      'MVC Architecture',
-      'JSON',
-      'Authentication (JWT)',
-    ],
-  },
-  {
-    title: 'Frontend Development',
-    items: ['React.js', 'JavaScript (ES6+)', 'HTML', 'CSS', 'Bootstrap'],
-  },
-  { title: 'Databases', items: ['MySQL', 'MongoDB', 'PostgreSQL', 'SQL Server'] },
-  { title: 'DevOps & Tools', items: ['Git', 'GitHub', 'Docker', 'AWS', 'Jira', 'Postman'] },
-  {
-    title: 'AI Tools',
-    items: ['ChatGPT', 'GitHub Copilot', 'Cursor', 'Claude', 'Gemini'],
-  },
-  {
-    title: 'Other',
-    items: [
-      'Caching (Redis)',
-      'Rate Limiting',
-      'API Design',
-      'API Security',
-      'Error Handling',
-      'Async Programming',
-    ],
-  },
-];
-
-const projects = [
-  {
-    title: 'Dealer Commander',
-    subtitle: 'Office Supply E-Commerce Platform',
-    description:
-      'Full-stack e-commerce platform for office supply dealers — dynamic React UI, multi-tier promotions, secure JWT authentication, Redis session caching, and MySQL query optimization that cut latency by 35%.',
-    highlights: [
-      'React storefront with dynamic promotions and catalog flows',
-      'JWT auth, role-based access, and Redis-backed sessions',
-      'MySQL tuning that reduced query latency by 35%',
-      'Razorpay payment integration for secure checkout',
-    ],
-    tags: ['React.js', 'Node.js', 'Express', 'MySQL', 'JWT', 'Redis', 'Razorpay'],
-  },
-  {
-    title: 'Medicle Coding System',
-    subtitle: 'Medical Coding Operations & Risk Adjustment Platform',
-    description:
-      'Full-stack medical coding platform for HCC risk adjustment — featuring a three-tier review pipeline, granular per-page RBAC, PHI encryption, and an optimized chart store engine for rapid audit workflows.',
-    highlights: [
-      'Three-level pipeline supporting L1 coding, L2 auditor review, and L3 final approval',
-      'Fine-grained page-level permissions with user override controls',
-      'Fernet PHI encryption, access logging, and optional device/MFA security controls',
-      'Integrated PDF workspace with workspace time-tracking and automated Excel exports',
-    ],
-    tags: ['Python', 'Flask', 'PostgreSQL', 'SQLAlchemy', 'Bootstrap', 'Gunicorn', 'Docker'],
-  },
-  {
-    title: 'NeedMate',
-    subtitle: 'On-Demand Home Services Marketplace Platform',
-    description:
-      'Full-stack on-demand home services marketplace — dynamic multi-language catalog, instant provider matching algorithms, non-blocking order queues, and real-time WebSocket location tracking.',
-    highlights: [
-      'Shared FastAPI backend powering Jinja2 web interfaces and a cross-platform Flutter mobile app',
-      'JWT authentication with mobile OTP verification and code-driven MongoDB RBAC',
-      'Non-blocking immediate job matching engine using background queue workers and geo-location scoring',
-      'Real-time WebSocket tracking and chat with AWS S3 storage and FCM push notifications',
-    ],
-    tags: ['FastAPI', 'Python', 'MongoDB', 'Flutter', 'WebSocket', 'Celery', 'Redis', 'AWS S3'],
-  },
-];
-
-const experience = [
-  {
-    role: 'Software Developer',
-    company: 'Sparken IT Solutions Private Ltd',
-    period: 'Nov 2024 – Present',
-    bullets: [
-      'Architecting full-stack e-commerce platforms with secure JWT authentication, RBAC, and optimized MySQL queries (35% latency reduction).',
-      'Designed RESTful APIs and integrated Razorpay payment gateway for production checkout flows.',
-    ],
-  },
-  {
-    role: 'Software Developer Intern',
-    company: 'G Soft Solutions Private Ltd',
-    period: 'May 2024 – Oct 2024',
-    bullets: [
-      'Developed responsive React.js and Node.js web applications with clean REST APIs and asynchronous communication.',
-      'Implemented efficient middleware patterns to reduce server load and improve request handling.',
-    ],
-  },
-];
-
-const education = [
-  {
-    title: 'Bachelor of Technology (Electronics & Telecommunication)',
-    school: 'Shri Guru Gobind Singhji Institute of Engineering & Technology, Nanded, Maharashtra',
-    period: 'Aug 2018 – July 2022',
-    detail: 'CGPA: 8.35',
-  },
-];
-
 const socials = [
-  {
-    label: 'GitHub',
-    href: SOCIAL.github,
-    Icon: GitHubIcon,
-  },
-  {
-    label: 'LinkedIn',
-    href: SOCIAL.linkedin,
-    Icon: LinkedInIcon,
-  },
-];
-
-const stats = [
-  { value: '02+', label: 'Years of experience' },
-  { value: '35%', label: 'Latency reduced' },
-  { value: '2', label: 'Product teams' },
-  { value: '8.35', label: 'B.Tech CGPA' },
+  { label: 'GitHub', href: SOCIAL.github, Icon: GitHubIcon },
+  { label: 'LinkedIn', href: SOCIAL.linkedin, Icon: LinkedInIcon },
 ];
 
 function App() {
@@ -224,12 +64,33 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [theme, setTheme] = useState(() => {
+    try {
+      const stored = localStorage.getItem('theme');
+      if (stored === 'light' || stored === 'dark') return stored;
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
 
   useEffect(() => {
     const syncView = () => setShowResume(window.location.hash === '#cv');
     window.addEventListener('hashchange', syncView);
     return () => window.removeEventListener('hashchange', syncView);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.setAttribute('content', theme === 'light' ? '#f4f7f8' : '#0a0c0f');
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      /* ignore */
+    }
+  }, [theme]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -251,6 +112,38 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    const ids = ['home', 'about', 'services', 'skills', 'projects', 'experience', 'education', 'contact'];
+    const nodes = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    if (!nodes.length) return undefined;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target?.id) setActiveSection(visible.target.id);
+      },
+      { rootMargin: '-35% 0px -55% 0px', threshold: [0.1, 0.25, 0.5] }
+    );
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, [showResume]);
+
+  useEffect(() => {
+    const nodes = document.querySelectorAll('.reveal-on-scroll');
+    if (!nodes.length) return undefined;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      },
+      { threshold: 0.12 }
+    );
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, [showResume]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -262,7 +155,7 @@ function App() {
     setErrorMessage('');
 
     if (!EMAILJS.serviceId || !EMAILJS.templateId || !EMAILJS.publicKey) {
-      setErrorMessage('Contact form is not configured. Please email directly.');
+      setErrorMessage('Contact form is not configured. Please email me instead.');
       setLoading(false);
       return;
     }
@@ -293,8 +186,8 @@ function App() {
           const detail = error?.text || error?.message || '';
           setErrorMessage(
             detail
-              ? `Failed to send message (${detail}). Please try again or email directly.`
-              : 'Failed to send message. Please try again or email directly.'
+              ? `Could not send (${detail}). Please email me instead.`
+              : 'Could not send. Please email me instead.'
           );
           setLoading(false);
         }
@@ -319,22 +212,16 @@ function App() {
             Sudhir Kadam
           </a>
 
-          <button
-            type="button"
-            className="nav-toggle"
-            aria-expanded={menuOpen}
-            aria-controls="primary-menu"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            onClick={() => setMenuOpen((open) => !open)}
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-
           <div id="primary-menu" className={`nav-menu ${menuOpen ? 'is-open' : ''}`}>
             <ul className="nav-list">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a className="nav-link" href={link.href} onClick={closeMenu}>
+                  <a
+                    className={`nav-link ${activeSection === link.href.slice(1) ? 'is-active' : ''}`}
+                    href={link.href}
+                    aria-current={activeSection === link.href.slice(1) ? 'true' : undefined}
+                    onClick={closeMenu}
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -344,27 +231,54 @@ function App() {
               Hire me
             </a>
           </div>
+
+          <div className="nav-tools">
+            <button
+              type="button"
+              className="theme-toggle"
+              onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
+              aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button
+              type="button"
+              className="nav-toggle"
+              aria-expanded={menuOpen}
+              aria-controls="primary-menu"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              onClick={() => setMenuOpen((open) => !open)}
+            >
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </nav>
 
       <header id="home" className="hero">
-        <div className="hero-media" aria-hidden="true">
-          <img src={profileImg} alt="" className="hero-media-img" />
+        <div className="hero-media">
+          <img
+            src={profileImg}
+            alt="Illustration of software developer Sudhir Kadam at a workstation"
+            className="hero-media-img"
+            width="1200"
+            height="800"
+            fetchPriority="high"
+            decoding="async"
+          />
           <div className="hero-media-veil" />
         </div>
 
         <div className="container hero-content">
+          <p className="hero-kicker reveal">Software Developer · Pune, India</p>
           <h1 className="hero-title reveal">
             <span className="hero-brand">Sudhir Kadam</span>
-            <span className="hero-role">
-              Full Stack Developer
-              <span className="hero-title-amp"> &amp; </span>
-              System Architect
-            </span>
+            <span className="hero-role">Full Stack Developer</span>
           </h1>
           <p className="hero-lead reveal reveal-delay-1">
-            I build high-concurrency backends, sub-second data pipelines, and resilient web apps
-            designed for real production scale.
+            I build production React, Node.js, Python, and AI-assisted systems for e-commerce,
+            healthcare operations, and on-demand marketplaces — with secure APIs, careful data
+            access, and measurable performance work.
           </p>
           <div className="hero-actions reveal reveal-delay-2">
             <a href="#cv" className="btn btn-primary">
@@ -379,7 +293,7 @@ function App() {
                   key={label}
                   href={href}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer me"
                   className="social-btn"
                   aria-label={label}
                 >
@@ -405,39 +319,62 @@ function App() {
           </div>
         </section>
 
-        <section id="services" className="section">
+        <section id="about" className="section">
+          <div className="container about-layout reveal-on-scroll">
+            <header className="section-heading section-heading-left">
+              <p className="eyebrow">About</p>
+              <h2>Building software that ships</h2>
+            </header>
+            <div className="about-copy">
+              <p>
+                I am Sudhir Kadam, a full stack developer in Pune. I work across React, Node.js,
+                Python, and AI-assisted workflows — shipping e-commerce platforms, healthcare
+                operations tools, and on-demand marketplace products with secure APIs and
+                performance-focused backends.
+              </p>
+              <p>
+                I am open to full-time roles and freelance work on backend-heavy products, APIs, and
+                production web apps. If that matches what you are hiring for, say hello below.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" className="section section-muted">
           <div className="container">
             <header className="section-heading section-heading-left">
               <p className="eyebrow">Services</p>
               <h2>What I deliver</h2>
               <p className="section-intro">
-                Fast, scalable web applications that connect complex backends with clean,
-                user-focused interfaces.
+                The same skills I use in production: storefronts, APIs, data, and access control.
               </p>
             </header>
             <div className="services-grid">
-              {services.map(({ title, icon: Icon, description }) => (
-                <article key={title} className="service-item">
-                  <div className="service-icon" aria-hidden="true">
-                    <Icon size={22} />
-                  </div>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              ))}
+              {services.map(({ title, icon, description }) => {
+                const Icon = serviceIcons[icon];
+                return (
+                  <article key={title} className="service-item reveal-on-scroll">
+                    <div className="service-icon" aria-hidden="true">
+                      {Icon ? <Icon size={22} /> : null}
+                    </div>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
 
-        <section id="skills" className="section section-muted">
+        <section id="skills" className="section">
           <div className="container">
-            <header className="section-heading">
+            <header className="section-heading section-heading-left">
               <p className="eyebrow">Skills</p>
               <h2>Core tools and technologies</h2>
             </header>
             <div className="skills-grid">
               {skillGroups.map((group) => (
-                <article key={group.title} className="skill-group">
+                <article key={group.title} className="skill-group reveal-on-scroll">
                   <h3>{group.title}</h3>
                   <ul className="skill-list">
                     {group.items.map((item) => (
@@ -450,7 +387,7 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" className="section">
+        <section id="projects" className="section section-muted">
           <div className="container">
             <header className="section-heading section-heading-left">
               <p className="eyebrow">Projects</p>
@@ -463,7 +400,10 @@ function App() {
 
             <div className="projects-grid">
               {projects.map((project) => (
-                <article key={project.title} className="project-card">
+                <article key={project.title} className="project-card reveal-on-scroll">
+                  <div className={`project-cover project-cover-${project.kicker.toLowerCase()}`}>
+                    <span>{project.kicker}</span>
+                  </div>
                   <h3>{project.title}</h3>
                   <p className="project-subtitle">{project.subtitle}</p>
                   <p className="project-desc">{project.description}</p>
@@ -477,6 +417,11 @@ function App() {
                       <li key={tag}>{tag}</li>
                     ))}
                   </ul>
+                  <div className="project-links">
+                    <a href="#contact">
+                      <ExternalLink size={16} aria-hidden="true" /> Request a walkthrough
+                    </a>
+                  </div>
                 </article>
               ))}
             </div>
@@ -491,7 +436,7 @@ function App() {
             </header>
             <ol className="timeline">
               {experience.map((item, index) => (
-                <li key={item.role + item.company} className="timeline-item">
+                <li key={item.role + item.company} className="timeline-item reveal-on-scroll">
                   <span className="timeline-index" aria-hidden="true">
                     {String(index + 1).padStart(2, '0')}
                   </span>
@@ -520,7 +465,7 @@ function App() {
               <h2>Academic background</h2>
             </header>
             {education.map((item) => (
-              <article key={item.title} className="education-block">
+              <article key={item.title} className="education-block reveal-on-scroll">
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.school}</p>
@@ -538,10 +483,10 @@ function App() {
           <div className="container">
             <header className="section-heading section-heading-left">
               <p className="eyebrow">Contact</p>
-              <h2>Let&apos;s build something impactful</h2>
+              <h2>Let&apos;s build something useful</h2>
               <p className="section-intro">
-                Available for freelance work, product partnerships, and custom backend / full-stack
-                solutions.
+                Available for full-time roles, freelance work, and custom backend / full-stack
+                builds.
               </p>
             </header>
 
@@ -565,7 +510,7 @@ function App() {
                       key={label}
                       href={href}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="noopener noreferrer me"
                       className="social-btn"
                       aria-label={label}
                     >
@@ -579,7 +524,7 @@ function App() {
                 {formSubmitted ? (
                   <div className="form-success" role="status">
                     <h3>Message sent</h3>
-                    <p>Thanks for reaching out. I&apos;ll get back to you shortly.</p>
+                    <p>Thanks — I usually reply within a day.</p>
                     <button
                       type="button"
                       className="btn btn-ghost"
@@ -589,7 +534,7 @@ function App() {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="contact-form" noValidate={false}>
+                  <form onSubmit={handleSubmit} className="contact-form">
                     {errorMessage && (
                       <div className="form-error" role="alert">
                         {errorMessage}
@@ -631,7 +576,7 @@ function App() {
                         type="text"
                         id="subject"
                         name="subject"
-                        placeholder="Project inquiry / job opportunity"
+                        placeholder="Role, freelance project, or question"
                         value={formData.subject}
                         onChange={handleInputChange}
                         required
@@ -644,7 +589,7 @@ function App() {
                         id="message"
                         name="message"
                         rows="5"
-                        placeholder="Tell me a bit about your project..."
+                        placeholder="Tell me a bit about the role or project..."
                         value={formData.message}
                         onChange={handleInputChange}
                         required
