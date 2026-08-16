@@ -245,6 +245,12 @@ function App() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (EMAILJS.publicKey) {
+      emailjs.init({ publicKey: EMAILJS.publicKey });
+    }
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -267,11 +273,15 @@ function App() {
         EMAILJS.templateId,
         {
           name: formData.name,
+          from_name: formData.name,
           email: formData.email,
+          from_email: formData.email,
+          reply_to: formData.email,
           subject: formData.subject,
+          title: formData.subject,
           message: formData.message,
         },
-        EMAILJS.publicKey
+        { publicKey: EMAILJS.publicKey }
       )
       .then(
         () => {
@@ -279,8 +289,13 @@ function App() {
           setLoading(false);
           setFormData({ name: '', email: '', subject: '', message: '' });
         },
-        () => {
-          setErrorMessage('Failed to send message. Please try again or email directly.');
+        (error) => {
+          const detail = error?.text || error?.message || '';
+          setErrorMessage(
+            detail
+              ? `Failed to send message (${detail}). Please try again or email directly.`
+              : 'Failed to send message. Please try again or email directly.'
+          );
           setLoading(false);
         }
       );
