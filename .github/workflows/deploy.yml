@@ -33,15 +33,6 @@ jobs:
         env:
           VITE_BASE: /sudhir_kadam_portfolio/
           VITE_SITE_URL: https://sudhir1507.github.io/sudhir_kadam_portfolio
-          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
-          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
-          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
-          VITE_CONTACT_EMAIL: Kadamsudhir362@gmail.com
-          VITE_CONTACT_PHONE: '9359831795'
-          VITE_CONTACT_LOCATION: Pune, India
-          VITE_GITHUB_URL: https://github.com/sudhir1507?tab=repositories
-          VITE_GITHUB_PROFILE_URL: https://github.com/sudhir1507
-          VITE_LINKEDIN_URL: https://www.linkedin.com/in/sudhir-kadam-b32371212/
 
       - name: Add Pages fallbacks
         run: |
