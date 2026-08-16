@@ -19,6 +19,7 @@ function seoFiles(siteUrl) {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${site}/</loc>
+    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
