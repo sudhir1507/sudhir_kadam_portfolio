@@ -119,19 +119,47 @@ const skillGroups = [
   },
 ];
 
-const featuredProject = {
-  title: 'Dealer Commander',
-  subtitle: 'Office Supply E-Commerce Platform',
-  description:
-    'Full-stack e-commerce platform for office supply dealers — dynamic React UI, multi-tier promotions, secure JWT authentication, Redis session caching, and MySQL query optimization that cut latency by 35%.',
-  highlights: [
-    'React storefront with dynamic promotions and catalog flows',
-    'JWT auth, role-based access, and Redis-backed sessions',
-    'MySQL tuning that reduced query latency by 35%',
-    'Razorpay payment integration for secure checkout',
-  ],
-  tags: ['React.js', 'Node.js', 'Express', 'MySQL', 'JWT', 'Redis', 'Razorpay'],
-};
+const projects = [
+  {
+    title: 'Dealer Commander',
+    subtitle: 'Office Supply E-Commerce Platform',
+    description:
+      'Full-stack e-commerce platform for office supply dealers — dynamic React UI, multi-tier promotions, secure JWT authentication, Redis session caching, and MySQL query optimization that cut latency by 35%.',
+    highlights: [
+      'React storefront with dynamic promotions and catalog flows',
+      'JWT auth, role-based access, and Redis-backed sessions',
+      'MySQL tuning that reduced query latency by 35%',
+      'Razorpay payment integration for secure checkout',
+    ],
+    tags: ['React.js', 'Node.js', 'Express', 'MySQL', 'JWT', 'Redis', 'Razorpay'],
+  },
+  {
+    title: 'Medicle Coding System',
+    subtitle: 'Medical Coding Operations & Risk Adjustment Platform',
+    description:
+      'Full-stack medical coding platform for HCC risk adjustment — featuring a three-tier review pipeline, granular per-page RBAC, PHI encryption, and an optimized chart store engine for rapid audit workflows.',
+    highlights: [
+      'Three-level pipeline supporting L1 coding, L2 auditor review, and L3 final approval',
+      'Fine-grained page-level permissions with user override controls',
+      'Fernet PHI encryption, access logging, and optional device/MFA security controls',
+      'Integrated PDF workspace with workspace time-tracking and automated Excel exports',
+    ],
+    tags: ['Python', 'Flask', 'PostgreSQL', 'SQLAlchemy', 'Bootstrap', 'Gunicorn', 'Docker'],
+  },
+  {
+    title: 'NeedMate',
+    subtitle: 'On-Demand Home Services Marketplace Platform',
+    description:
+      'Full-stack on-demand home services marketplace — dynamic multi-language catalog, instant provider matching algorithms, non-blocking order queues, and real-time WebSocket location tracking.',
+    highlights: [
+      'Shared FastAPI backend powering Jinja2 web interfaces and a cross-platform Flutter mobile app',
+      'JWT authentication with mobile OTP verification and code-driven MongoDB RBAC',
+      'Non-blocking immediate job matching engine using background queue workers and geo-location scoring',
+      'Real-time WebSocket tracking and chat with AWS S3 storage and FCM push notifications',
+    ],
+    tags: ['FastAPI', 'Python', 'MongoDB', 'Flutter', 'WebSocket', 'Celery', 'Redis', 'AWS S3'],
+  },
+];
 
 const experience = [
   {
@@ -411,48 +439,32 @@ function App() {
           <div className="container">
             <header className="section-heading section-heading-left">
               <p className="eyebrow">Projects</p>
-              <h2>Featured work</h2>
+              <h2>Selected work</h2>
               <p className="section-intro">
-                A deep dive into production work that shaped how I design APIs, data layers, and
-                checkout systems.
+                Production platforms spanning e-commerce, healthcare operations, and on-demand
+                marketplaces.
               </p>
             </header>
 
-            <article className="project-feature">
-              <div className="project-feature-copy">
-                <p className="project-kicker">Case study</p>
-                <h3>{featuredProject.title}</h3>
-                <p className="project-subtitle">{featuredProject.subtitle}</p>
-                <p className="project-desc">{featuredProject.description}</p>
-                <ul className="project-highlights">
-                  {featuredProject.highlights.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <ul className="tag-list" aria-label="Technologies used">
-                  {featuredProject.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
-                  ))}
-                </ul>
-              </div>
-              <aside className="project-feature-aside" aria-label="Project impact">
-                <div className="impact-block">
-                  <span className="impact-value">35%</span>
-                  <span className="impact-label">Query latency reduced</span>
-                </div>
-                <div className="impact-block">
-                  <span className="impact-value">JWT + Redis</span>
-                  <span className="impact-label">Secure session architecture</span>
-                </div>
-                <div className="impact-block">
-                  <span className="impact-value">Razorpay</span>
-                  <span className="impact-label">Production payments</span>
-                </div>
-                <a href="#contact" className="btn btn-primary project-cta">
-                  Discuss a similar build <ArrowRight size={18} aria-hidden="true" />
-                </a>
-              </aside>
-            </article>
+            <div className="projects-grid">
+              {projects.map((project) => (
+                <article key={project.title} className="project-card">
+                  <h3>{project.title}</h3>
+                  <p className="project-subtitle">{project.subtitle}</p>
+                  <p className="project-desc">{project.description}</p>
+                  <ul className="project-highlights">
+                    {project.highlights.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <ul className="tag-list" aria-label="Technologies used">
+                    {project.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
