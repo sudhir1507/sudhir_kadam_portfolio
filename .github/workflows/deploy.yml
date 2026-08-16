@@ -15,7 +15,6 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,17 +27,6 @@ jobs:
 
       - name: Install
         run: npm ci
-
-      - name: Verify EmailJS secrets
-        run: |
-          if [ -z "$VITE_EMAILJS_SERVICE_ID" ] || [ -z "$VITE_EMAILJS_TEMPLATE_ID" ] || [ -z "$VITE_EMAILJS_PUBLIC_KEY" ]; then
-            echo "EmailJS secrets are missing. Add them as Repository secrets, or as Environment secrets on github-pages."
-            exit 1
-          fi
-        env:
-          VITE_EMAILJS_SERVICE_ID: ${{ secrets.VITE_EMAILJS_SERVICE_ID }}
-          VITE_EMAILJS_TEMPLATE_ID: ${{ secrets.VITE_EMAILJS_TEMPLATE_ID }}
-          VITE_EMAILJS_PUBLIC_KEY: ${{ secrets.VITE_EMAILJS_PUBLIC_KEY }}
 
       - name: Build
         run: npm run build
