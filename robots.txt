@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sudhir1507.github.io/sudhir_kadam_portfolio/sitemap.xml
