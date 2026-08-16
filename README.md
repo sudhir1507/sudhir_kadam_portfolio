@@ -13,11 +13,13 @@ Free GitHub Pages only works on a **public** repository.
 2. After the first successful deploy, **Settings → Pages → Branch** = `gh-pages` / `/ (root)`
 3. Site URL: https://sudhir1507.github.io/sudhir_kadam_portfolio/
 
-Add these repository secrets so the contact form works in production:
+Add EmailJS values as **Repository secrets** (Settings → Secrets and variables → Actions → Repository secrets), not only Environment secrets:
 
 - `VITE_EMAILJS_SERVICE_ID`
 - `VITE_EMAILJS_TEMPLATE_ID`
 - `VITE_EMAILJS_PUBLIC_KEY`
+
+If you keep them as Environment secrets, the environment name must be `github-pages`. Re-run **Deploy GitHub Pages** after adding them so they are baked into the build.
 
 ## Local setup
 
